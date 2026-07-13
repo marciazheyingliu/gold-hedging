@@ -1,0 +1,40 @@
+{
+  "id": "gold_hedging_config_explanation_generator_1",
+  "pluginKey": "@official-plugins/ai-text-generate",
+  "pluginVersion": "1.0.17",
+  "name": "黄金对冲配置说明生成器",
+  "description": "根据策略参数和计算结果，流式生成黄金对冲配置的逻辑说明和风险提示自然语言文案，用于智能问答首页的建议生成功能。",
+  "icon": "",
+  "paramsSchema": {
+    "type": "object",
+    "properties": {
+      "calculation_results": {
+        "type": "string",
+        "description": "基于策略参数计算得出的结果数据，包括预期收益、最大回撤、对冲效率等"
+      },
+      "user_risk_preference": {
+        "type": "string",
+        "description": "用户的风险偏好等级，如保守型、稳健型、进取型等（可选）"
+      },
+      "strategy_params": {
+        "type": "string",
+        "description": "黄金对冲策略的相关参数，包括资产配置比例、对冲周期、风险阈值等"
+      }
+    },
+    "required": [
+      "strategy_params",
+      "calculation_results"
+    ]
+  },
+  "formValue": {
+    "modelParams": {
+      "maxTokens": 8192,
+      "temperature": 0.5
+    },
+    "prompt": "你是一位资深的金融投资顾问，专业从事黄金对冲策略研究与投资者教育工作。\n\n请基于以下提供的策略参数和计算结果，生成专业且易懂的黄金对冲配置说明文案，内容需包含逻辑说明和风险提示两大部分：\n\n策略参数：\n{{input.strategy_params}}\n\n计算结果：\n{{input.calculation_results}}\n\n用户风险偏好：{{input.user_risk_preference}}\n\n内容生成要求：\n1. 整体结构：\n   - 开头先用简洁明了的语言概括本次黄金对冲配置的核心结论和适用场景\n   - 第一部分：配置逻辑说明（约300-400字）\n   - 第二部分：风险提示（约200-300字）\n   - 结尾给出行动建议和后续操作指引\n\n2. 逻辑说明部分要求：\n   - 清晰解释本次对冲配置的设计思路和核心原理\n   - 结合计算结果说明各配置项的合理性和预期效果\n   - 突出该配置方案的优势和适用的市场环境\n   - 语言要专业但避免过度使用晦涩术语，普通投资者能够理解\n\n3. 风险提示部分要求：\n   - 客观列示该对冲方案可能面临的各类风险\n   - 说明极端市场情况下的潜在损失区间\n   - 明确提示方案的局限性和适用前提\n   - 风险表述要准确清晰，避免模糊或误导性描述\n\n4. 语言风格要求：\n   - 保持专业、严谨、客观的 tone\n   - 避免夸大收益或淡化风险\n   - 采用面向普通投资者的友好表述方式\n   - 适当使用分段和重点标注，提高可读性",
+    "modelID": "87"
+  },
+  "createdAt": 1783851796640,
+  "updatedAt": 1783851796640,
+  "createdBy": 7584078443571055560
+}

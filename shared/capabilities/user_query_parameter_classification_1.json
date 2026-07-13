@@ -1,0 +1,43 @@
+{
+  "id": "user_query_parameter_classification_1",
+  "pluginKey": "@official-plugins/ai-categorization",
+  "pluginVersion": "1.0.18",
+  "name": "用户查询参数分类识别",
+  "description": "从用户自然语言提问中识别行业、风险偏好、市场状态等结构化参数，用于智能问答首页的参数解析功能。",
+  "icon": "",
+  "paramsSchema": {
+    "type": "object",
+    "properties": {
+      "user_query": {
+        "type": "string",
+        "description": "用户的自然语言提问内容"
+      }
+    },
+    "required": [
+      "user_query"
+    ]
+  },
+  "formValue": {
+    "categories": [
+      {
+        "name": "行业"
+      },
+      {
+        "name": "风险偏好"
+      },
+      {
+        "name": "市场状态"
+      }
+    ],
+    "customRequirements": "请从用户提问中提取以下三类参数：1. 行业：识别用户提到的具体行业，共13个行业分类；2. 风险偏好：分为保守、稳健、激进三类；3. 市场状态：分为波动、通胀、恐慌三类。请以JSON格式输出三个参数的识别结果，未明确提及的参数返回空字符串。",
+    "modelID": "87",
+    "modelParams": {
+      "maxTokens": 8192,
+      "temperature": 0.5
+    },
+    "textToBeCategorized": "{{input.user_query}}"
+  },
+  "createdAt": 1783851789123,
+  "updatedAt": 1783851789123,
+  "createdBy": 7584078443571055560
+}
